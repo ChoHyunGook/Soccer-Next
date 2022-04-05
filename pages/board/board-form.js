@@ -18,7 +18,7 @@ export default function BoardhtmlForm(){
         alert(`데이터셋 출력 : ${JSON.stringify(form)}`)
         axios.post('http://localhost:5000/api/board/write',inputs)
         .then(res=>{
-            alert(res.data)
+            alert(`결과: ${res.data.result}`)
         })
         .catch(err=>alert(err))
     }

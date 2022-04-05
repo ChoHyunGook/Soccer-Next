@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 export default function Bmi() {
-
     const [inputs, setInputs] = useState({})
 
     const onChange = e => {

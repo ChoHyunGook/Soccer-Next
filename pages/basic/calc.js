@@ -8,7 +8,7 @@ export default function Calc(){
         e.preventDefault()
         const{value,name}=e.target
         setInputs({
-            ...inputs,[name]:value})
+            ...inputs,[name]:value})    
     }
     const handleSubmit=(e)=>{
         e.preventDefault()
