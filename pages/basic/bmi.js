@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 export default function Bmi() {
+    const proxy = 'http://localhost:5000'
     const [inputs, setInputs] = useState({})
 
-    const onChange = e => {
+    const handleChange = e => {
         e.preventDefault()
         const { value, name } = e.target
         setInputs({ ...inputs, [name]: value })
@@ -11,7 +12,7 @@ export default function Bmi() {
 
     const handleSubmit = e => {
         e.preventDefault()
-        axios.post('http://localhost:5000/api/basic/bmi', inputs)
+        axios.post(proxy+'/api/basic/bmi', inputs)
         .then(res => {
             const bmi = res.data
             document.getElementById('result-span').innerHTML = `
@@ -23,22 +24,23 @@ export default function Bmi() {
         })
         .catch(err => alert(err))
     }
-    return (<div>
+    return (<>
         <form action="" onSubmit={handleSubmit} >
-            <h1>BMI계산기</h1>
+            <h1>BMI</h1>
             <div>
-                <label htmlFor="">이름</label><br/>
-                <input type="text" name="name" onChange={onChange} /><br />
+                <label htmlFor="">이름</label><br />
+                <input type="text" name="name" onChange={handleChange} /><br />
 
-                <label htmlFor="">키</label><br/>
-                <input type="text" name="height" onChange={onChange} /><br />
+                <label htmlFor="">키</label><br />
+                <input type="text" name="height" onChange={handleChange} /><br />
 
-                <label htmlFor="">몸무게</label><br/>
-                <input type="text" name="weight" onChange={onChange} /><br /><br/>
-                <input type="submit" value="BMI 체크" /><br /><br/>
+                <label htmlFor="">몸무게</label><br />
+                <input type="text" name="weight" onChange={handleChange} /><br /><br />
+                <input type="submit" value="BMI 체크" /><br />
             </div>
         </form>
         <div> 결과 : <span id="result-span"></span></div>
+
         <button onClick={ () => {history.back('/'); } } >뒤로가기</button>
-    </div>)
+    </>)
 }
