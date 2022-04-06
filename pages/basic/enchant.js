@@ -17,7 +17,7 @@ export default function Enchant(){
         .then(res => {
             const enchant = res.data
             document.getElementById('result-span').innerHTML=`
-            <h3>선택한무기 : ${enchant.weapon}</h3>
+            <h3>선택한 아이템 : ${enchant.item}</h3>
             <h3>결과 : ${enchant.res}</h3>
             `
         })
@@ -27,10 +27,10 @@ export default function Enchant(){
     return (<>
             <h3>랜덤 무기강화 게임</h3><br/><br/>
             <h1>무기별로 강화확률 다름</h1><br/>
-            <h1>(##주의##극악난이도 있음)</h1><br/>
+            <h1>(##주의## 절대반지하다가 손목나가도 책임안짐##)</h1><br/>
             <form action="" onSubmit={handleSubmit}>
                 <div>
-                <select name="weapon" onChange={handleChange}>
+                <select name="item" onChange={handleChange}>
                 <option value="sword">소드</option>
                 <option value="greatSword">그레이트소드</option>
                 <option value="shortSword">단검</option>
@@ -38,6 +38,10 @@ export default function Enchant(){
                 <option value="spear">스피어</option>
                 <option value="axe">도끼</option>
                 <option value="cookKnife">식칼</option>
+                <option value="ring">반지</option>
+                <option value="ear">귀걸이</option>
+                <option value="neck">목걸이</option>
+                <option value="absoluteRing">절대반지</option>
             </select><br /><br />
                 </div>
                 <div>
