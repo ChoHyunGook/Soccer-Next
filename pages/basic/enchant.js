@@ -15,7 +15,6 @@ export default function Enchant(){
         e.preventDefault()
         axios.post(proxy + '/api/basic/enchant', inputs)
         .then(res => {
-            alert(`${JSON.stringify(res.data)}`)
             const enchant = res.data
             document.getElementById('result-span').innerHTML=`
             <h3>선택한무기 : ${enchant.weapon}</h3>
@@ -42,7 +41,7 @@ export default function Enchant(){
             </select><br /><br />
                 </div>
                 <div>
-                    <input type="submit" value="강화!!!"/>&nbsp;<br/><br/>
+                    <input type="submit" value="강화!!!"/><br/><br/>
                 </div>
             </form>
             <div> <h3>결과 :</h3> <span id='result-span'></span></div><br/><br/>
