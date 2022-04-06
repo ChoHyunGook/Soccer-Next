@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {useState} from "react";
 
 export default function Calc(){
+    const proxy = 'http://localhost:5000'
     const[inputs,setInputs]=useState({})
 
     const handleChange=(e)=>{
@@ -12,7 +13,7 @@ export default function Calc(){
     }
     const handleSubmit=(e)=>{
         e.preventDefault()
-        axios.post('http://localhost:5000/api/basic/calc', inputs)
+        axios.post(proxy + '/api/basic/calc', inputs)
         .then(res=>{
             const calc = res.data
             document.getElementById('result-span').innerHTML=`

@@ -14,10 +14,9 @@ export default function SignUp(){
         e.preventDefault()
         axios.post('http://localhost:5000/api/user/signup', inputs)
         .then(res => {
-            const signup = res.data
+            alert(`결과: ${res.data.result}`)
             document.getElementById('result-span').innerHTML = `
-        
-            <h3>${signup.name}님 회원가입을 축하합니다. 웰컴 투 헬프론트</h3>
+            <h3> 회원가입을 축하합니다. 웰컴 투 헬프론트</h3>
             `
         })
         .catch(err => alert(err))
@@ -37,7 +36,7 @@ export default function SignUp(){
     <input type="text" name="name" onChange={handleChange}/><br/>
 
     <label htmlFor="">전화번호</label><br />
-    <input type="text" name="tel" onChange={handleChange}/>
+    <input type="text" name="telephone" onChange={handleChange}/>
     
     <input type="submit" value="확인" /><br /><br/>
     </form>
