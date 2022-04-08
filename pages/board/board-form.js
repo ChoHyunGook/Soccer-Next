@@ -4,7 +4,6 @@ import React,{ useState } from "react";
 
 export default function BoardhtmlForm(){
     const[inputs,setInputs]=useState({})
-    const{passengerId,name,teamId,subject} = inputs
 
     const handleChange=(e)=>{
         e.preventDefault()
@@ -14,11 +13,11 @@ export default function BoardhtmlForm(){
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        const form={passengerId,name,teamId,subject}
-        alert(`데이터셋 출력 : ${JSON.stringify(form)}`)
         axios.post('http://localhost:5000/api/board/write',inputs)
         .then(res=>{
-            alert(`결과: ${res.data.result}`)
+            const form=res.data
+            document.getElementById('result-span').innerHTML=`
+            <h3> 결과 : ${JSON.stringify(form)}</h3>`
         })
         .catch(err=>alert(err))
     }
@@ -71,6 +70,8 @@ return (<>
             <input type="submit" className={style.inputSubmit}
             onClick={handleSubmit} value="Submit"/>
         </div>
+        <button onClick={ () => {history.back('/'); } } >뒤로가기</button>
+        <div><span id="result-span">결과</span></div>
         </htmlForm>
         </div>
 </>)
